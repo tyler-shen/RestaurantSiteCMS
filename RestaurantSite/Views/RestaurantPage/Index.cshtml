@@ -1,0 +1,53 @@
+﻿@model RestaurantPageViewModel
+
+<style>
+    table {
+        width: 100%;
+        border: 2px solid black;
+    }
+
+    td {
+        text-align: center;
+        font-size: large;
+        line-height: 1.8;
+    }
+
+    .smallImg {
+        width: 70px;
+        border-radius: 4px;
+    }
+</style>
+
+<div>
+    <h3>@Html.PropertyFor(x => x.CurrentPage.Heading)</h3>
+
+    <div>
+        @Html.PropertyFor(x => x.CurrentPage.Image)
+    </div>
+
+    <div>
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+    </div>
+
+    <br />
+    <br />
+
+    <div>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            @foreach (var item in Model.CurrentPage.List)
+            {
+                <tr>
+                    <td>@item.Item</td>
+                    <td>@item.Price</td>
+                    <td><img class="smallImg" src="@Url.ContentUrl(item.Image)"></td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
